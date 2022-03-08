@@ -4,7 +4,8 @@ use std::cmp::Ordering;
 use std::io;
 
 fn main() {
-    println!("guess the number!");
+    println!("------------------");
+    println!("Guess the number!");
     let secret_number = rand::thread_rng().gen_range(1, 101);
     let mut counter = 0;
 
@@ -25,8 +26,14 @@ fn main() {
         println!("You type: {}", guess);
 
         match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Less!"),
-            Ordering::Greater => println!("Greater!"),
+            Ordering::Less => {
+                println!("Less!");
+                println!("------------------");
+            },
+            Ordering::Greater => {
+                println!("Greater!");
+                println!("------------------");
+            },
             Ordering::Equal => {
                 println!("Right! You played {} times", counter);
                 break;
