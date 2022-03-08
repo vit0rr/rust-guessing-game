@@ -10,7 +10,7 @@ fn main() {
 
     let mut contador = 0;
     loop { // loop para que a pessoa possa ter múltiplas tentativas
-        contador += 0;
+        contador += 1;
         println!("tentativa: {:?}", contador);
         println!("Digite o seu palpite!"); // exibe no terminal o texto
 
