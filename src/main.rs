@@ -4,31 +4,31 @@ use std::cmp::Ordering;
 use std::io;
 
 fn main() {
-    println!("Advinhe o número!");
-    let numero_secreto = rand::thread_rng().gen_range(1, 101);
-    let mut contador = 0;
+    println!("guess the number!");
+    let secret_number = rand::thread_rng().gen_range(1, 101);
+    let mut counter = 0;
 
     loop {
-        contador += 1;
-        println!("tentativa: {:?}", contador);
-        println!("Digite o seu palpite!");
-        let mut palpite = String::new();
+        counter += 1;
+        println!("attempt: {:?}", counter);
+        println!("Type your guess!");
+        let mut guess = String::new();
         io::stdin()
-            .read_line(&mut palpite)
-            .expect("Falha ao ler entrada");
+            .read_line(&mut guess)
+            .expect("Error to read entry");
 
-        let palpite: u32 = match palpite.trim().parse() {
+        let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
             Err(_) => continue,
         };
 
-        println!("Você disse: {}", palpite);
+        println!("You type: {}", guess);
 
-        match palpite.cmp(&numero_secreto) {
-            Ordering::Less => println!("Muito baixo!"),
-            Ordering::Greater => println!("Muito alto!"),
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Less!"),
+            Ordering::Greater => println!("Greater!"),
             Ordering::Equal => {
-                println!("Acertou! Você jogou por {} vezes", contador);
+                println!("Right! You played {} times", counter);
                 break;
             }
         }
