@@ -1,5 +1,4 @@
 extern crate rand;
-
 use std::io;
 use std::cmp::Ordering;
 use rand::Rng;
@@ -9,7 +8,10 @@ fn main() {
 
     let numero_secreto = rand::thread_rng().gen_range(1,101); // atribui a "numero_secreto", números gerados de 1-101
 
+    let mut contador = 0;
     loop { // loop para que a pessoa possa ter múltiplas tentativas
+        contador += 0;
+        println!("tentativa: {:?}", contador);
         println!("Digite o seu palpite!"); // exibe no terminal o texto
 
         let mut palpite = String::new(); // cria uma variável "palpite" que espera um valor do tipo String
@@ -27,7 +29,7 @@ fn main() {
             Ordering::Less => println!("Muito baixo!"),
             Ordering::Greater =>  println!("Muito alto!"),
             Ordering::Equal => {
-                println!("Acertou!");
+                println!("Acertou! Você jogou por {} vezes", contador);
                 break;
             }
         }
