@@ -20,7 +20,7 @@ fn main() {
 
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
-            Err(_) => continue,
+            Err(_) => break {println!("Please enter a number!")},
         };
 
         println!("You type: {}", guess);
@@ -38,6 +38,11 @@ fn main() {
                 println!("Right! You played {} times", counter);
                 break;
             }
+        }
+
+        if counter == 10 {
+            println!("You lose! More than 10 attempts!");
+            break;
         }
     }
 }
